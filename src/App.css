@@ -52,3 +52,25 @@ body {
 .image-container:hover .overlay {
   opacity: 1;
 }
+
+.movie-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.movie-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.image-container {
+  flex: 0 0 auto; /* Don't shrink */
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 200px;
+}
+

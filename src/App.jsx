@@ -3,6 +3,7 @@ import MovieList from "./components/MovieList";
 import MovieListHeading from "./components/MovieListHeading";
 import Search from "./components/Search";
 import AddFavourite from "./components/AddFavourite";
+import RemoveFavourite from "./components/RemoveFavourite";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -30,6 +31,12 @@ function App() {
     const newFavouriteList = [...favourites,movie];
     setFavourites(newFavouriteList);
   }
+
+   const removeFavouriteMovie = (movie) => {
+    //creates a copy of the list using ...favourite and add movie to it the set it the our stateful variable
+    const newFavouriteList = favourites.filter((favourite) => favourite.imdbID !== movie.imdbID);
+    setFavourites(newFavouriteList);
+  }
   //default search value
   return (
     <div className="container-fluid movie-app">
@@ -39,6 +46,12 @@ function App() {
       </div>
       <div className="row">
         <MovieList movies={movies} favouriteComponent={AddFavourite} handleFavouriteClicks={addFavouriteMovie}/>
+      </div>
+            <div className="row d-flex align-items-center mt-4 mb-4">
+        <MovieListHeading heading="Favourites" />
+      </div>
+      <div className="row">
+        <MovieList movies={favourites} favouriteComponent={RemoveFavourite} handleFavouriteClicks={removeFavouriteMovie}/>
       </div>
     </div>
   );
